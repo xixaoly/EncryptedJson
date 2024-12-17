@@ -1,0 +1,65 @@
+!.gitignore
+
+# archives
+*.7z
+*.jar
+*.rar
+*.zip
+*.tgz
+*.gz
+*.bzip
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.tar
+
+# vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# other/temp files
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+temp
+*.fuse*
+# *.map
+
+# User-specific files
+
+*.suo
+*.user
+*.sln.docstates
+*.csproj.user
+
+**/PublishProfiles/*.user
+**/PublishProfiles/*.pubxml
+
+**/obj/**
+**/bin/**
+**/pkg/**
+**/pkgobj/**
+**/pkgobj/**
+**/PrecompiledWeb/**
+**/csx/**
+**/packages/
+
+# production
+build/
+
+.vs
+.vscode
+
+appsettings.*.json
+

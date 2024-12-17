@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptedJson", "EncryptedJson\EncryptedJson.csproj", "{15C80E07-9033-4454-A3F3-2AAB68039037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptedJson.Test", "EncryptedJsonTest\EncryptedJson.Test.csproj", "{E3083376-A346-4F6D-A70F-9F3165079BB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{9EABE08C-0BB1-41A1-BB42-58422A02D0C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptedJson.CLI", "EncryptedJsonCLI\EncryptedJson.CLI.csproj", "{6F9AECD5-6116-46DF-9B85-3504A43ED640}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15C80E07-9033-4454-A3F3-2AAB68039037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C80E07-9033-4454-A3F3-2AAB68039037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C80E07-9033-4454-A3F3-2AAB68039037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C80E07-9033-4454-A3F3-2AAB68039037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3083376-A346-4F6D-A70F-9F3165079BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3083376-A346-4F6D-A70F-9F3165079BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3083376-A346-4F6D-A70F-9F3165079BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3083376-A346-4F6D-A70F-9F3165079BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EABE08C-0BB1-41A1-BB42-58422A02D0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EABE08C-0BB1-41A1-BB42-58422A02D0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EABE08C-0BB1-41A1-BB42-58422A02D0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EABE08C-0BB1-41A1-BB42-58422A02D0C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9AECD5-6116-46DF-9B85-3504A43ED640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9AECD5-6116-46DF-9B85-3504A43ED640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9AECD5-6116-46DF-9B85-3504A43ED640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9AECD5-6116-46DF-9B85-3504A43ED640}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
