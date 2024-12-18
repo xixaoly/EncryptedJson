@@ -5,7 +5,7 @@ using XiLabs.Helpers;
 
 var app = new CommandLineApplication
 {
-    Name = "encrypted-json",
+    Name = "encryptedjson",
     Description = "Tool for json config files encryption",
 };
 

@@ -1,0 +1,44 @@
+name: Release
+concurrency: build
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build the solution
+      run: dotnet build EncryptedJson --configuration Release
+    - name: Run tests
+      run: dotnet test EncryptedJsonTest --configuration Release
+
+  publish-to-nuget:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Publish to NuGet
+      uses: nuget/actions/publish@v3
+      with:
+        PROJECT_FILE_PATH: EncryptedJson/EncryptedJson.csproj
+        PACKAGE_NAME: Xilabs.EncryptedJson
+        DOTNET_NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        PACKAGE_VERSION: ${{ github.run_id }}
+        TARGET_FRAMEWORKS: net8.0
+        PACKAGE_SOURCE: https://api.nuget.org/v3/index.json

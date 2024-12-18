@@ -54,6 +54,7 @@ temp
 **/PrecompiledWeb/**
 **/csx/**
 **/packages/
+**/nupkg/
 
 # production
 build/
