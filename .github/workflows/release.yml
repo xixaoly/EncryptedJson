@@ -32,6 +32,7 @@ jobs:
 
   publish-to-nuget:
     needs: build-and-test
+    name: Pack and publish
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
