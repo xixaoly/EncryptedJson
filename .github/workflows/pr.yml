@@ -1,0 +1,30 @@
+name: Pull request
+concurrency: build
+
+on:
+  pull_request:
+    branches: [ master ]
+
+env:
+    NETCORE_VERSION: '8.0.x'
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.NETCORE_VERSION }}
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the solution
+      run: dotnet build EncryptedJson --configuration Release
+
+    - name: Run tests
+      run: dotnet test

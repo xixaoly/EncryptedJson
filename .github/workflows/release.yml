@@ -4,41 +4,48 @@ concurrency: build
 on:
   push:
     tags:
-      - "*"
+    - "[0-9]+.[0-9]+.[0-9]+"
+
+env:
+    NETCORE_VERSION: '8.0.x'
 
 jobs:
   build-and-test:
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: ${{ env.NETCORE_VERSION }}
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build the solution
       run: dotnet build EncryptedJson --configuration Release
+
     - name: Run tests
-      run: dotnet test EncryptedJsonTest --configuration Release
+      run: dotnet test
 
   publish-to-nuget:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: ${{ env.NETCORE_VERSION }}
+
     - name: Restore dependencies
       run: dotnet restore
-    - name: Publish to NuGet
-      uses: nuget/actions/publish@v3
-      with:
-        PROJECT_FILE_PATH: EncryptedJson/EncryptedJson.csproj
-        PACKAGE_NAME: Xilabs.EncryptedJson
-        DOTNET_NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        PACKAGE_VERSION: ${{ github.run_id }}
-        TARGET_FRAMEWORKS: net8.0
-        PACKAGE_SOURCE: https://api.nuget.org/v3/index.json
+
+    - name: Pack
+      run: dotnet pack EncryptedJson -p:PackageVersion=${{ github.run_id }}
+
+    - name: Publish
+      run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

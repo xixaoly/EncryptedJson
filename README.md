@@ -2,7 +2,7 @@
 This library extends `ConfigurationBuilder` about encrypted json files. RSA and AES supported.
 
 ## AES example
-```
+```csharp
 var builder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
     .AddEncryptedJsonFile(
@@ -15,7 +15,7 @@ Config config = configuration.Get<Config>() ?? new Config();
 ```
 
 ## RSA example
-```
+```csharp
 var builder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
     .AddEncryptedJsonFile("appsettings.rsa.bin", new RsaDecryptor(certificate), optional: true);
@@ -25,7 +25,7 @@ Config config = configuration.Get<Config>() ?? new Config();
 ```
 
 ## Tool for encryption
-```
+```bash
 # install
 dotnet pack EncryptedJsonCLI
 dotnet tool install --global --add-source ./EncryptedJsonCLI/nupkg EncryptedJson.CLI
