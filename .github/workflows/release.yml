@@ -44,8 +44,16 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Extract Tag Name
+      id: Extract_Tag
+      run: |
+        tag_name=${GITHUB_REF#refs/tags/}
+        echo "::set-output name=package_version::$tag_name"
+
     - name: Pack
-      run: dotnet pack EncryptedJson -p:PackageVersion=${{ github.ref }}
+      run: dotnet pack EncryptedJson -p:PackageVersion=${{ steps.Extract_Tag.outputs.package_version }}
+      if: steps.Extract_Tag.outputs
 
     - name: Publish
-      run: dotnet nuget push EncryptedJson/bin/Release/Xilabs.EncryptedJson.${{ github.ref }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push EncryptedJson/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      if: steps.Extract_Tag.outputs
