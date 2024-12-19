@@ -3,7 +3,7 @@ concurrency: build
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 env:
     NETCORE_VERSION: '8.0.x'

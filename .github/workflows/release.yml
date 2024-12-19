@@ -45,7 +45,7 @@ jobs:
       run: dotnet restore
 
     - name: Pack
-      run: dotnet pack EncryptedJson -p:PackageVersion=${{ github.run_id }}
+      run: dotnet pack EncryptedJson -p:PackageVersion=${{ github.ref }}
 
     - name: Publish
-      run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push EncryptedJson/bin/Release/Xilabs.EncryptedJson.${{ github.ref }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
